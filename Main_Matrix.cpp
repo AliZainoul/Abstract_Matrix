@@ -14,7 +14,19 @@ int main()
   for (int j = 0; j < m; j++)
   A[i][j] =  n/(abs(i - j) + 1.0);*/
   A = {{4,1},{1,3}};
+  cout << "**********" << endl;
   cout <<"Matrix A is: "<< endl << A << endl;
+  cout << "**********" << endl;
+  FullMtx B(A);
+  B[0][1] = -1;
+  cout << "Matrix B is " << endl << B << endl;
+  cout << "**********" << endl;
+  FullMtx C(A*B);
+  cout << "Matrix C is " << endl << C << endl;
+  cout << "**********" << endl;
+  FullMtx D(A+B);
+  cout << "Matrix D is " << endl << D << endl;
+  cout << "**********" << endl;
   Vector v1(n,0.0);
   double alpha = 90.90909090;
   cout << "Alpha is : " << alpha << endl;

@@ -86,19 +86,32 @@ Vector FullMtx::operator*(const Vector& vec) const
     error("matrix and vector sizes do not match in FullMtx::operator*()");
   Vector tm(nrows);
   for (int i = 0; i < nrows; i++)
-    for (int j = 0; j < ncols; j++) tm[i] += mx[i][j]*vec[j];
+  for (int j = 0; j < ncols; j++)
+  tm[i] += mx[i][j]*vec[j];
   return tm;
 }
 
 FullMtx operator*(const FullMtx& Mtx1, const FullMtx& Mtx2)
 {
-  if (Mtx1.ncols != Mtx2.nrows) error ("BAd matrix sizes.");
+  if (Mtx1.ncols != Mtx2.nrows) error ("Bad matrix sizes.");
   FullMtx Mtx (Mtx1.nrows,Mtx2.ncols);
   for (int i = 0; i < Mtx1.nrows; i++)
   for (int j = 0; j < Mtx2.ncols; j++)
   for (int k = 0; k < Mtx1.ncols; k++)
   Mtx[i][j] += (Mtx1[i][k]) * (Mtx2[k][j]);
   return Mtx;
+}
+
+FullMtx operator+(const FullMtx& Mtx1, const FullMtx& Mtx2)
+{
+  if (Mtx1.ncols != Mtx2.ncols || Mtx1.nrows != Mtx2.nrows )
+  error ("Bad matrix sizes.");
+  FullMtx Mtx (Mtx1.nrows,Mtx1.ncols);
+  for (int i = 0; i < Mtx1.nrows; i++)
+  for (int j = 0; j < Mtx1.ncols; j++)
+  Mtx[i][j] = (Mtx1[i][j]) + (Mtx2[i][j]);
+  return Mtx;
+
 }
 
 // ****** End full_mat_c.cpp  ****** //

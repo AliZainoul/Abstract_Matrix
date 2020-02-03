@@ -22,7 +22,8 @@ public:
     for (int i = 0; i < nrows; i++) delete[]  mx[i];
     delete[] mx;
   }
-  friend FullMtx operator * (const FullMtx&, const FullMtx&); // Matrix Multiplication
+  friend FullMtx operator* (const FullMtx&, const FullMtx&); // Matrix Multiplication
+  friend FullMtx operator+ (const FullMtx&, const FullMtx&); // Overload of the Operator '+'
   FullMtx& operator=(const FullMtx&); // Overload of the Operator '='
   Vector operator*(const Vector&) const; // Matrix-Vector multiply
   double* operator[](int i) const { return mx[i]; } // Method that Returns the i-th row
